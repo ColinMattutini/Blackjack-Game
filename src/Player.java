@@ -5,12 +5,14 @@ public class Player {
     private String name;
     private Hand hand;
     private int cardCount;
+    private int chipsTotal;
 
 
     public Player(String name){
         this.name = name;
         this.hand = new Hand();
         this.cardCount = 0;
+        this.chipsTotal = 500;
     }
 
     public void hit(Card card){
@@ -40,6 +42,22 @@ public class Player {
             return true;
         }
         return false;
+    }
+
+    public int getChipsTotal(){
+        return this.chipsTotal;
+    }
+
+    public int playerBet(int bet){
+        if(this.chipsTotal - bet < 0){
+            throw new IllegalArgumentException("You don't have enough money!");
+        }
+        return this.chipsTotal - bet;
+
+    }
+
+    public int startBet(){
+        return this.chipsTotal -= 25;
     }
 
 }

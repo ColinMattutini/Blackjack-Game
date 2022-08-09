@@ -18,6 +18,11 @@ public class BlackJackMainGame {
         //Shuffles deck to randomize order of cards
         deck.shuffleDeck();
         while(true) {
+            System.out.println("Your total money is: " + player.getChipsTotal());
+            System.out.println("How much would you like to bet?");
+
+
+
             //Starts player and dealer off with 2 cards. Calls get card twice.
             if(player.totalCards() < 2) {
                 player.startHand(deck.getCard(i));
