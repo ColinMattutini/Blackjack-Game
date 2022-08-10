@@ -3,25 +3,36 @@ import java.util.Scanner;
 public class BlackJackMainGame {
     private Deck deck;
     Scanner scanner = new Scanner(System.in);
+    private Player player;
 
-    public void start(){
+    public String startMessage(){
+        return "Welcome to blackjack!";
+    }
+
+
+
+
+    public void start(Player player){
         //Creates a new deck
         deck = new Deck();
         int i = 0;
 
         //Currently hardcoded player and dealer names
         //Implement a way to add in more players (up to six)
-        System.out.println("Welcome to blackjack!");
-        Player player = new Player("Colin");
+
+        //Player player = new Player("Colin");
         Dealer dealer = new Dealer("The Banker");
 
         //Shuffles deck to randomize order of cards
         deck.shuffleDeck();
+
+        System.out.println("Your total money is: " + player.getChipsTotal());
+        System.out.println("How much would you like to bet?");
+
+        int bet = scanner.nextInt();
+        scanner.nextLine();
+        player.playerBet(bet);
         while(true) {
-            System.out.println("Your total money is: " + player.getChipsTotal());
-            System.out.println("How much would you like to bet?");
-
-
 
             //Starts player and dealer off with 2 cards. Calls get card twice.
             if(player.totalCards() < 2) {
@@ -80,11 +91,26 @@ public class BlackJackMainGame {
         //Logic to know if the player wins or not
         if((player.handTotal() > dealer.handTotal() && player.playerBust() == false) || dealer.dealerBust() == true){
             System.out.println("You win!");
+            player.playerWin(bet);
         }
         else{System.out.println("You Lose!");}
         System.out.println(player);
         System.out.println(player.handTotal());
         System.out.println(i);
+    }
+
+    public boolean playAgain(Player player){
+        if(player.getChipsTotal() == 0){
+            System.out.println("You're out of chips. You're Done!");
+            return false;
+        }
+        System.out.println("Play again?");
+        String play = scanner.nextLine();
+        if(play.equals("Yes")){
+            return true;
+        }
+
+        return false;
     }
 
 }
