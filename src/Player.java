@@ -38,7 +38,7 @@ public class Player {
     }
 
     public boolean playerBust(){
-        if(this.handTotal() > 22){
+        if(this.handTotal() > 21){
             return true;
         }
         return false;
@@ -48,16 +48,27 @@ public class Player {
         return this.chipsTotal;
     }
 
+    public void setChipsTotal(int chipsTotal){
+        this.chipsTotal = chipsTotal;
+    }
+
     public int playerBet(int bet){
         if(this.chipsTotal - bet < 0){
             throw new IllegalArgumentException("You don't have enough money!");
         }
-        return this.chipsTotal - bet;
+        this.chipsTotal -= bet;
+        return this.chipsTotal;
 
     }
 
     public int startBet(){
         return this.chipsTotal -= 25;
     }
+
+    public void playerWin(int winnings){
+        this.chipsTotal += (winnings * 2);
+    }
+
+
 
 }
