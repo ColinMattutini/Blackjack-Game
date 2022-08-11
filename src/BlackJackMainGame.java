@@ -9,9 +9,6 @@ public class BlackJackMainGame {
         return "Welcome to blackjack!";
     }
 
-
-
-
     public void start(Player player){
         //Creates a new deck
         deck = new Deck();
@@ -25,6 +22,8 @@ public class BlackJackMainGame {
 
         //Shuffles deck to randomize order of cards
         deck.shuffleDeck();
+
+        player.getHand(player);
 
         System.out.println("Your total money is: " + player.getChipsTotal());
         System.out.println("How much would you like to bet?");

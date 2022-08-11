@@ -3,41 +3,51 @@ public class Card {
     private int value;
 
     public Card(char newSuit, int newValue){
-        if(newSuit != 'H' && newSuit != 'C' && newSuit != 'S' && newSuit != 'D'){
+        if(newSuit != 'H' && newSuit != 'C' && newSuit != 'S' && newSuit != 'D')
+        {
             System.out.println("Incorrect suit type.");
-        }else{
+        }
+        else
+        {
             this.suit = newSuit;
         }
-        if(newValue < 1 || newValue > 13){
+        if(newValue < 1 || newValue > 13)
+        {
             System.out.println("Incorrect value");
-        }else{
+        }else
+        {
             this.value = newValue;
         }
-
     }
 
-    public String getSuit(){
+    public String getSuit() {
         String suit = "";
-        if(this.suit == 'H'){
+
+        if(this.suit == 'H')
+        {
             suit = "Hearts";
         }
-        if(this.suit == 'C'){
+        if(this.suit == 'C')
+        {
             suit = "Clubs";
         }
-        if(this.suit == 'D'){
+        if(this.suit == 'D')
+        {
             suit = "Diamonds";
         }
-        if(this.suit == 'S'){
+        if(this.suit == 'S')
+        {
             suit = "Spades";
         }
         return suit;
     }
-    public int getValue(){
-        if(this.value > 10){
+    public int getValue() {
+        if (this.value > 10) {
             this.value = 10;
         }
         return this.value;
     }
+
 
     public String getValueName() {
         String name = "";
@@ -82,6 +92,7 @@ public class Card {
             }
         return name;
         }
+
 
 
 }

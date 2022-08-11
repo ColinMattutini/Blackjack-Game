@@ -10,9 +10,18 @@ public class Player {
 
     public Player(String name){
         this.name = name;
-        this.hand = new Hand();
         this.cardCount = 0;
         this.chipsTotal = 500;
+        this.hand = new Hand();
+    }
+
+    public Hand getHand(Player player){
+        return this.hand;
+    }
+
+    public void setHand()
+    {
+        this.hand = hand;
     }
 
     public void hit(Card card){
