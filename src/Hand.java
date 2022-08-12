@@ -2,7 +2,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Hand {
-    private List<Card> hand = new ArrayList<>();
+    private List<Card> hand;
+
+    public Hand()
+    {
+        this.hand = new ArrayList<>();
+    }
 
     public void startHand(Card card)
     {
@@ -13,7 +18,8 @@ public class Hand {
         this.hand.add(card);
     }
 
-    public void clearHand(){
+    public void clearHand()
+    {
         this.hand.clear();
     }
 
@@ -35,8 +41,21 @@ public class Hand {
         int total = 0;
         for(Card holder: this.hand)
         {
+            if(holder.getValueName().equals("Ace"))
+            {
+                total += 10;
+            }
+
             total += holder.getValue();
         }
+        for(Card holder: this.hand)
+        {
+            if(total > 21 && holder.getValueName().equals("Ace"))
+            {
+                total -= 10;
+            }
+        }
+
 
         return total;
     }

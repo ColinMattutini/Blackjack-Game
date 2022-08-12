@@ -9,11 +9,15 @@ public class BlackJackMainGame {
         return "Welcome to blackjack!";
     }
 
+
+
     public void start(Player player){
         //Creates a new deck
-        deck = new Deck();
-        int i = 0;
 
+
+        int i = 0;
+        deck = new Deck();
+        player.setHand();
         //Currently hardcoded player and dealer names
         //Implement a way to add in more players (up to six)
 
@@ -22,8 +26,6 @@ public class BlackJackMainGame {
 
         //Shuffles deck to randomize order of cards
         deck.shuffleDeck();
-
-        player.getHand(player);
 
         System.out.println("Your total money is: " + player.getChipsTotal());
         System.out.println("How much would you like to bet?");
@@ -75,14 +77,9 @@ public class BlackJackMainGame {
             if(decision.equals("Stand")){
                 while(dealer.hitOrStand() == true){
                     dealer.hit(deck.getCard(i));
+                    i++;
                     System.out.println("The dealer has: " + dealer + "for a total of: " + dealer.handTotal());
                 }
-                break;
-            }
-
-            //Quit breaks the loop
-            //Known bug... can hit and then quit out.
-            if(decision.equals("Quit")) {
                 break;
             }
         }
@@ -99,6 +96,7 @@ public class BlackJackMainGame {
     }
 
     public boolean playAgain(Player player){
+
         if(player.getChipsTotal() == 0){
             System.out.println("You're out of chips. You're Done!");
             return false;

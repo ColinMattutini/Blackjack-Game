@@ -12,20 +12,22 @@ public class Player {
         this.name = name;
         this.cardCount = 0;
         this.chipsTotal = 500;
-        this.hand = new Hand();
     }
 
-    public Hand getHand(Player player){
-        return this.hand;
+    public void hit(Card card)
+    {
+        this.hand.addCard(card);
     }
 
     public void setHand()
     {
-        this.hand = hand;
+        this.hand = new Hand();
+        this.cardCount = 0;
     }
 
-    public void hit(Card card){
-        this.hand.addCard(card);
+    public Hand getHand()
+    {
+        return this.hand;
     }
 
     public void startHand(Card card){
