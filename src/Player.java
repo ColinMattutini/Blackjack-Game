@@ -80,6 +80,11 @@ public class Player {
         this.chipsTotal += (winnings * 2);
     }
 
+    public void playerPush(int winnings)
+    {
+        this.chipsTotal += winnings;
+    }
+
 
 
 }

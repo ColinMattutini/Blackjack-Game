@@ -89,7 +89,13 @@ public class BlackJackMainGame {
             System.out.println("You win!");
             player.playerWin(bet);
         }
-        else{System.out.println("You Lose!");}
+        if(player.handTotal() == dealer.handTotal())
+        {
+            System.out.println("Push. Returning original bet.");
+            player.playerPush(bet);
+        }
+        if((player.handTotal() < dealer.handTotal() && dealer.dealerBust() == false) || player.playerBust() == true)
+        {System.out.println("You Lose!");}
         System.out.println(player);
         System.out.println(player.handTotal());
         System.out.println(i);
