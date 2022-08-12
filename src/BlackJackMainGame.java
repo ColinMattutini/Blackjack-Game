@@ -82,8 +82,10 @@ public class BlackJackMainGame {
                 }
                 break;
             }
+
         }
 
+        System.out.println("The dealer has: " + dealer);
         //Logic to know if the player wins or not
         if((player.handTotal() > dealer.handTotal() && player.playerBust() == false) || dealer.dealerBust() == true){
             System.out.println("You win!");

@@ -2,6 +2,8 @@ public class Card {
     private char suit;
     private int value;
 
+    //Creates a new card that iterates through 1-13 for each suit to create
+    //a 52-card deck
     public Card(char newSuit, int newValue){
         if(newSuit != 'H' && newSuit != 'C' && newSuit != 'S' && newSuit != 'D')
         {
@@ -19,6 +21,8 @@ public class Card {
             this.value = newValue;
         }
     }
+
+    //Method to return what the suit for the card is
 
     public String getSuit() {
         String suit = "";
@@ -41,6 +45,9 @@ public class Card {
         }
         return suit;
     }
+
+    //Returns the card value
+    //If the value is >10 (Jack, Queen, King) the value becomes 10
     public int getValue() {
         if (this.value > 10) {
             return 10;
@@ -48,8 +55,7 @@ public class Card {
         return this.value;
     }
 
-
-
+    //Returns the value name
     public String getValueName() {
         String name = "";
         if (this.value == 1) {
